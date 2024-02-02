@@ -156,6 +156,9 @@ function createLuckyMoney(delay) {
     
         luckyMoney.style.width = randomWidth + 'px';
         luckyMoney.style.height = randomHeight + 'px';
+        $(".modal-header .close").css({
+            "background": ""
+        })
     } else {
         const randomWidth = Math.floor(Math.random() * 50) + 80;
         const randomHeight = Math.floor(Math.random() * 50) + 140;
