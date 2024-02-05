@@ -23,9 +23,7 @@ function btnLucky() {
     })
 
     var moneyRandom = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-    console.log(moneyRandom + "Tièn ramdom");
     moneyAccount = moneyAccount + moneyRandom;
-    console.log(moneyAccount + "tiengoc");
 
     $(".luckyMoneyAc").html(`${moneyRandom}`)
     $(".child1").remove();
@@ -52,14 +50,12 @@ function openModalLogin() {
         "overflow": "hidden"
     })
 }
-
 $(function () {
     $('.dowebok').liMarquee({
         direction: 'up'
     });
 });
 function handclick() {
-    console.log(moneyAccount)
     notYesMoneyAcount = document.getElementsByClassName("notYesMoneyAcount")
     if (moneyAccount > 0) {
         console.log("ra")
@@ -78,9 +74,6 @@ function handclick() {
     $('#modalResutCheck').modal('show')
     $('.lucky-money').remove
 }
-
-
-
 // Sự kiện rơi bao lì lì
 function triggerLuckyMoneyEvent() {
     var numberOfEnvelopes = 20; //(số lần rơi)
@@ -118,7 +111,6 @@ function updateClock() {
     var remainingSecond = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
     // console.log("giờ " + remainingHour + " phút " + remainingMinute + " giây " + remainingSecond);
-
     // Cập nhật các phần tử HTML
     $("#remainingHourCp").html(remainingHour);
     $("#remainingMinuteCp").html(remainingMinute);
@@ -136,7 +128,6 @@ function startClockUpdate() {
     updateClock(); // Gọi ngay khi trang được load
     setInterval(updateClock, 1000); // Cập nhật mỗi giây
 }
-
 // Bắt đầu cập nhật đồng hồ khi trang được load
 startClockUpdate();
 
@@ -145,7 +136,6 @@ $(document).ready(function () {
     triggerLuckyMoneyEvent();
 });
 function createLuckyMoney(delay) {
-
     const luckyMoney = document.createElement('img');
     luckyMoney.classList.add('lucky-money');
     
@@ -153,7 +143,6 @@ function createLuckyMoney(delay) {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         const randomWidth = Math.floor(Math.random() * 30) + 50;
         const randomHeight = Math.floor(Math.random() * 30) + 70;
-    
         luckyMoney.style.width = randomWidth + 'px';
         luckyMoney.style.height = randomHeight + 'px';
         $(".modal-header .close").css({
@@ -166,8 +155,6 @@ function createLuckyMoney(delay) {
         luckyMoney.style.width = randomWidth + 'px';
         luckyMoney.style.height = randomHeight + 'px';
     }
-    
-
     // Vị trí ban đầu ngẫu nhiên trên chiều rộng của màn hình
     const startPosition = Math.random() * window.innerWidth;
     luckyMoney.style.left = startPosition + 'px';
@@ -180,7 +167,6 @@ function createLuckyMoney(delay) {
         luckyMoney.addEventListener('click', function () {
             handclick()
             luckyMoney.style.left = Math.random() * window.innerWidth + 'px';
-
             // Kiểm tra xem ảnh có còn trong màn hình không
             if (luckyMoney.getBoundingClientRect().bottom > window.innerHeight) {
                 // Nếu ảnh rơi xuống dưới cùng, loại bỏ nó khỏi DOM
@@ -203,24 +189,17 @@ function createLuckyMoney(delay) {
 });
 
     document.getElementById('lucky-money-container').appendChild(luckyMoney);
-
     // Xử lý sự kiện khi hình ảnh rơi xuống dưới cùng
-   
     // Duyệt qua từng ảnh và thêm sự kiện onclick
- 
-
     luckyMoney.addEventListener('animationiteration', function () {
         // luckyMoney.style.left = Math.random() * window.innerWidth + 'px';
-        
         // console.log('Bạn đã nhấp vào hình ảnh bao lì lì!');
         luckyMoney.remove();
-            console.log('Hình ảnh bao lì lì đã biến mất!');
     });
     
 }
 
 $(document).ready(function () {
-    // Mảng chứa thông tin khách hàng may mắn
     var accountLucky = [
     { account: "tienhu1" }, { account: "quy102" }, { account: "ngochu03" }, { account: "hanhphu" }, { account: "linh05" },
         { account: "than106" }, { account: "hoang107" }, { account: "qung108" }, { account: "thaao109" }, { account: "vau110" },
@@ -256,7 +235,8 @@ $(document).ready(function () {
         };
     }
 
-    // Hàm để hiển thị danh sách khách hàng
+
+    // Show all account
     function showAllListCustomer() {
         var container = $("#showAllListCustomerLucky");
         var container2 = $("#showAllListCustomerLuckyCp");
@@ -272,10 +252,7 @@ $(document).ready(function () {
             container.append(ul);
             container2.append(ul2);
         });
-
-      
     }
-
-    // Gọi hàm để hiển thị danh sách khách hàng
+    // end Show all account
     showAllListCustomer();
 });
